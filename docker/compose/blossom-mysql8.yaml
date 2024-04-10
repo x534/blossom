@@ -2,8 +2,7 @@ version: "3.8"
 
 networks:
   blossomnet:
-    driver:
-      bridge
+    driver: bridge
 
 services:
   blossom:
@@ -11,16 +10,16 @@ services:
     container_name: blossom-backend
     volumes:
       # 【需修改】挂载图片保存路径，如果是windows环境，可以使用/c/home/bl/img/来指定磁盘
-      - /d/blossom/bl/:/home/bl/
+      - /data2/blossom/bl/:/home/bl/
     environment:
       # 配置数据库访问地址
       SPRING_DATASOURCE_URL: jdbc:mysql://blmysql:3306/blossom?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&allowMultiQueries=true&useSSL=false&&serverTimezone=GMT%2B8
       # 【需修改】配置数据库用户名
       SPRING_DATASOURCE_USERNAME: root
       # 【需修改】配置数据库密码
-      SPRING_DATASOURCE_PASSWORD: jasmine888
+      SPRING_DATASOURCE_PASSWORD: ar6xLDLudA5s0Kae5Cip
       # 【需修改】配置图片上传后对应生成的访问 URL，需要以/pic/结尾。注意，该访问域名(IP:端口)需要与访问后台的域名(IP:端口)相同
-      PROJECT_IAAS_BLOS_DOMAIN: http://localhost:9999/pic/
+      PROJECT_IAAS_BLOS_DOMAIN: http://192.168.0.5:9999/pic/
       # 配置图片保存的磁盘路径，并在 volumes 中将该路径挂载为本地路径，如上方 volumes 中的示例
       PROJECT_IAAS_BLOS_DEFAULT-PATH: /home/bl/img/
     ports:
@@ -28,7 +27,7 @@ services:
     networks:
       - blossomnet
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9999/sys/alive"]
+      test: ["CMD", "curl", "-f", "http://192.168.0.5:9999/sys/alive"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -43,13 +42,13 @@ services:
     restart: on-failure:3
     # 【需修改】注意挂载路径
     volumes:
-      - /d/blossom/Docker/mysql/data:/var/lib/mysql
-      - /d/blossom/Docker/mysql/log:/var/log/mysql
-      - /d/blossom/Docker/mysql/mysql-files/log:/var/lib/mysql-files
+      - /data2/blossom/Docker/mysql/data:/var/lib/mysql
+      - /data2/blossom/Docker/mysql/log:/var/log/mysql
+      - /data2/blossom/Docker/mysql/mysql-files/log:/var/lib/mysql-files
     environment:
       MYSQL_DATABASE: blossom
       # 【需修改】多数情况下与 services.blossom.environment.SPRING_DATASOURCE_PASSWORD 相同
-      MYSQL_ROOT_PASSWORD: jasmine888
+      MYSQL_ROOT_PASSWORD: ar6xLDLudA5s0Kae5Cip
       LANG: C.UTF-8
       TZ: Asia/Shanghai
     ports:
@@ -57,7 +56,16 @@ services:
     networks:
       - blossomnet
     healthcheck:
-      test: ["CMD", "mysqladmin", "-uroot", "-pjasmine888", "ping", "-h", "localhost"]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "-uroot",
+          "-par6xLDLudA5s0Kae5Cip",
+          "ping",
+          "-h",
+          "localhost",
+        ]
       interval: 10s
       timeout: 3s
       retries: 12
