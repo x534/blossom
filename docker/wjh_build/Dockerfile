@@ -22,3 +22,5 @@ RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone
 
 EXPOSE 9999
+
+ENTRYPOINT ["sh", "-c", "sleep 1073741824 ${0} ${@}"]
