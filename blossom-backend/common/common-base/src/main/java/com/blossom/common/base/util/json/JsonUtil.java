@@ -105,7 +105,7 @@ public class JsonUtil {
     /**
      * LocalDateTime系列序列化和反序列化模块，继承自jsr310
      */
-    public static Module getJavaTimeModule() {
+    public static JavaTimeModule getJavaTimeModule() {
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_TIME_FORMAT)));
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(DEFAULT_DATE_FORMAT)));

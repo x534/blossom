@@ -21,10 +21,10 @@
         <revision>1.14.0-SNAPSHOT</revision>
 
         <!-- 编译设置 -->
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <!--
         SpringBoot 版本
@@ -33,7 +33,7 @@
         <spring-boot.version>2.7.18</spring-boot.version>
 
         <!-- 其他三方包版本 -->
-        <lombok.version>1.18.8</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
         <!--
         BOM 在 dependencyManagement 中指定依赖版本
         -->
