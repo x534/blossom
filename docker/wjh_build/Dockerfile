@@ -1,7 +1,8 @@
 FROM eclipse-temurin:17.0.10_7-jre AS builder
 WORKDIR application
 # ARG JAR_FILE=../../blossom-backend/backend/target/*.jar
-ARG JAR_FILE=../../blossom-backend/backend/target/backend-blossom.jar
+# ARG JAR_FILE=../../blossom-backend/backend/target/backend-blossom.jar
+ARG JAR_FILE=application.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
